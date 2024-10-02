@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clue - Juego de Detectives</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Clue - Juego de Detectives</h1>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Tus Cartas</h2>
+                <ul id="cartas-jugador"></ul>
+            </div>
+            
+            <div class="col-md-4">
+                <h2>Habitaciones</h2>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-secondary boton-habitacion">Cocina</button>
+                    <button class="btn btn-secondary boton-habitacion">Salón de Baile</button>
+                    <button class="btn btn-secondary boton-habitacion">Biblioteca</button>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <h2>Libreta del Detective</h2>
+                <div id="libreta"></div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <h2>Habitación Actual: <span id="habitacion-actual">No seleccionada</span></h2>
+            
+            <div id="formulario-sugerencia" style="display: none;">
+                <h3>Hacer una Sugerencia</h3>
+                <select id="sospechoso" class="form-select mb-2">
+                    <option value="">Selecciona un sospechoso</option>
+                    <option>Coronel Mostaza</option>
+                    <option>Prof. Ciruela</option>
+                    <option>Sra. Escarlata</option>
+                </select>
+                <select id="arma" class="form-select mb-2">
+                    <option value="">Selecciona un arma</option>
+                    <option>Cuchillo</option>
+                    <option>Revólver</option>
+                    <option>Llave Inglesa</option>
+                </select>
+                <button id="boton-sugerir" class="btn btn-primary">Hacer Sugerencia</button>
+            </div>
+            
+            <div id="resultado-sugerencia" class="mt-3"></div>
+        </div>
+        
+        <div class="mt-4">
+            <h2>Hacer Acusación Final</h2>
+            <select id="sospechoso-final" class="form-select mb-2">
+                <option value="">Selecciona un sospechoso</option>
+                <option>Coronel Mostaza</option>
+                <option>Prof. Ciruela</option>
+                <option>Sra. Escarlata</option>
+            </select>
+            <select id="arma-final" class="form-select mb-2">
+                <option value="">Selecciona un arma</option>
+                <option>Cuchillo</option>
+                <option>Revólver</option>
+                <option>Llave Inglesa</option>
+            </select>
+            <select id="habitacion-final" class="form-select mb-2">
+                <option value="">Selecciona una habitación</option>
+                <option>Cocina</option>
+                <option>Salón de Baile</option>
+                <option>Biblioteca</option>
+            </select>
+            <button id="boton-acusar" class="btn btn-danger">Hacer Acusación</button>
+            <button id="boton-ia" class="btn btn-warning mt-2">Solucionar con IA</button> <!-- Nuevo botón -->
+            <div id="resultado-acusacion" class="mt-3"></div>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar la solución -->
+    <div class="modal" id="modal-solucion">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title">Solución del Caso</h5>
+                </div>
+                <div class="modal-body">
+                    <h1 id="mensaje-solucion"></h1>
+                </div>
+                <div class="modal-footer">
+                    <button id="cerrar-modal" class="btn btn-success">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
